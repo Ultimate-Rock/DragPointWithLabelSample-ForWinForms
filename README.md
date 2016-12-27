@@ -3,7 +3,7 @@
 ### Description
 In this project, dedicated to **EditInteractiveOverlay**, you will see how easy it is to add some labeling to your dragged control point, showing dynamic information. Here we show how to display the distance from the dragged control point to the closest point of a reference shape. Also, to augment the user experience, the closest point of the reference shape is also shown varying as the control point is dragged around.
 
-![Screenshot](https://github.com/ThinkGeo/DraggedPointStyleWithLabelSample-ForWinForms/blob/master/ScreenShot.png)
+![Screenshot](https://github.com/ThinkGeo/DragPointWithLabelSample-ForWinForms/blob/master/ScreenShot.png)
 
 ### Requirements
 This sample makes use of the following NuGet Packages
