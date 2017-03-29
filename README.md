@@ -3,6 +3,8 @@
 ### Description
 In this project, dedicated to **EditInteractiveOverlay**, you will see how easy it is to add some labeling to your dragged control point, showing dynamic information. Here we show how to display the distance from the dragged control point to the closest point of a reference shape. Also, to augment the user experience, the closest point of the reference shape is also shown varying as the control point is dragged around.
 
+Please refer to [Wiki](http://wiki.thinkgeo.com/wiki/map_suite_desktop_for_wpf) for the details.
+
 ![Screenshot](https://github.com/ThinkGeo/DragPointWithLabelSample-ForWinForms/blob/master/ScreenShot.png)
 
 ### Requirements
@@ -16,11 +18,11 @@ Working...
 
 ### Getting Help
 
-[Map Suite Desktop For Winforms Wiki Resources](http://wiki.thinkgeo.com/wiki/map_suite_desktop_edition)
+[Map Suite Desktop for Winforms Wiki Resources](http://wiki.thinkgeo.com/wiki/map_suite_desktop_for_winforms)
 
-[Map Suite Desktop For Winforms Product Description](http://thinkgeo.com/map-suite-developer-gis/desktop-edition/)
+[Map Suite Desktop for Winforms Product Description](https://thinkgeo.com/ui-controls#desktop-platforms)
 
-[ThinkGeo Community Site](http://community.thinkgeo.com/c/map-suite-desktop-edition-support)
+[ThinkGeo Community Site](http://community.thinkgeo.com/)
 
 [ThinkGeo Web Site](http://www.thinkgeo.com)
 
