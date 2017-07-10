@@ -13,9 +13,39 @@ This sample makes use of the following NuGet Packages
 [MapSuite 10.0.0](https://www.nuget.org/packages?q=ThinkGeo)
 
 ### About the Code
+```csharp
+Collection<SimpleCandidate> labelsInAllLayers = new Collection<SimpleCandidate>();
+EditShapesLayer.Open();
+EditShapesLayer.Draw(canvas, labelsInAllLayers);
+canvas.Flush();
 
-Working...
+ExistingControlPointsLayer.Open();
+Collection<Feature> controlPoints = ExistingControlPointsLayer.FeatureSource.GetAllFeatures(ReturningColumnsType.AllColumns);
 
+foreach (Feature feature in controlPoints)
+{
+    //Looks at the value of "state" to draw the control point as dragged or not.
+    Feature[] features = new Feature[1] { feature };
+    draggedControlPointStyle.Draw(features, canvas, labelsInAllLayers, labelsInAllLayers);
+
+    PointShape pointShape = feature.GetShape() as PointShape;
+    PointShape closestPointShape = referenceShape.GetClosestPointTo(pointShape, GeographyUnit.DecimalDegree);
+    //Draws the closest point on the reference shape and the distance to it from the dragged control point.
+    if (closestPointShape != null)
+    {
+        double Dist = System.Math.Round(closestPointShape.GetDistanceTo(pointShape, GeographyUnit.DecimalDegree, DistanceUnit.Meter));
+        ScreenPointF ScreenPointF = ExtentHelper.ToScreenCoordinate(canvas.CurrentWorldExtent, pointShape, canvas.Width, canvas.Height);
+        canvas.DrawTextWithScreenCoordinate(System.Convert.ToString(Dist) + " m", new GeoFont("Arial", 12, DrawingFontStyles.Bold), new GeoSolidBrush(GeoColor.StandardColors.Black),
+                                          ScreenPointF.X + 35, ScreenPointF.Y, DrawingLevel.LabelLevel);
+        canvas.DrawEllipse(closestPointShape, 12, 12, new GeoSolidBrush(GeoColor.StandardColors.Purple), DrawingLevel.LevelFour);
+    }
+}
+foreach (Feature feature in SelectedControlPointLayer.InternalFeatures)
+{
+    Feature[] features = new Feature[1] { feature };
+    controlPointStyle.Draw(features, canvas, labelsInAllLayers, labelsInAllLayers);
+}
+```
 ### Getting Help
 
 [Map Suite Desktop for Winforms Wiki Resources](http://wiki.thinkgeo.com/wiki/map_suite_desktop_for_winforms)
@@ -29,7 +59,10 @@ Working...
 ### Key APIs
 This example makes use of the following APIs:
 
-Working...
+- [ThinkGeo.MapSuite.Drawing.GeoCanvas](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.drawing.geocanvas)
+- [ThinkGeo.MapSuite.Shapes.Feature](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.shapes.feature)
+- [ThinkGeo.MapSuite.Shapes.PointShape](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.shapes.pointshape)
+- [ThinkGeo.MapSuite.GeographyUnit](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.geographyunit)
 
 ### About Map Suite
 Map Suite is a set of powerful development components and services for the .Net Framework.
